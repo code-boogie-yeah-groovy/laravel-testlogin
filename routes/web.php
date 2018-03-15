@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/adminregister', 'AdminController@registerIndex');
+
+Route::get('/makeadmin/{id}', [ 'as' => 'makeadmin', 'uses' => 'AdminController@makeAdmin' ]);
