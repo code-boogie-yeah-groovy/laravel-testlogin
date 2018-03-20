@@ -48,4 +48,13 @@ class LoginController extends Controller
     {
         return Auth::guard('employee');
     }
+
+    protected function authenticated($request, $user)
+    {
+        if($user->is_admin == true) {
+            return redirect()->intended('admin');
+        }
+
+        return redirect()->intended('home');
+    }
 }

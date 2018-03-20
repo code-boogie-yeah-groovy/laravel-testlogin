@@ -19,6 +19,7 @@ list of employees
             @foreach($admins as $admin)
                 @if($admin->emp_id == $employee->id)
                     <strong>admin</strong>
+                    <a class="btn" href="{{ route('removeadmin', [$employee->id]) }}" onclick="return confirm('Are you sure?')">remove priviledge</a>
                     @php ($boolAdmin = true)
                 @endif
             @endforeach

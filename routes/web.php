@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/adminregister', 'AdminController@registerIndex');
-
-Route::get('/makeadmin/{id}', [ 'as' => 'makeadmin', 'uses' => 'AdminController@makeAdmin' ]);
+Route::middleware('admin')->group(function() {
+    Route::get('/adminregister', 'AdminController@registerIndex');
+    Route::get('/makeadmin/{id}', [ 'as' => 'makeadmin', 'uses' => 'AdminController@makeAdmin' ]);
+    Route::get('/removeadmin/{id}', [ 'as' => 'removeadmin', 'uses' => 'AdminController@removeAdmin' ]);
+    Route::view('/admin', 'admin');
+});
